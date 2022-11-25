@@ -31,5 +31,9 @@ func main() {
 		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
+	r.HandleFunc("", func(w http.ResponseWriter, r *http.Request) {
+		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
+		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
+	})
 	http.ListenAndServe(":"+port, r) //load
 }
