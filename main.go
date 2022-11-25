@@ -1,7 +1,7 @@
 package main
 
 import (
-	//"fmt"
+	//"fmt" //this is used for directly writing if needed
 	"html/template"
 	"net/http"
 	"os"
@@ -20,7 +20,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "80"
 	}
 
 	mux := http.NewServeMux()
