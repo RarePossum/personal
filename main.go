@@ -25,5 +25,5 @@ func main() {
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
 
-	http.ListenAndServe(":8080", r) //load
+	http.ListenAndServe(":80", r) //load
 }
