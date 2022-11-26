@@ -15,20 +15,15 @@ type Welcome struct {
 
 func main() {
 
-	//mux := http.NewServeMux()
-	//fs := http.FileServer(http.Dir("static")) //static
 	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
 
-	//mux.HandleFunc("/", indexHandler)  //index
 	r := mux.NewRouter()
+
     r.PathPrefix("/static/").Handler(fs)
+
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
-	r.HandleFunc("", func(w http.ResponseWriter, r *http.Request) {
-		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
-		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
-	})
+	
 	http.ListenAndServe(":8080", r) //load
 }
