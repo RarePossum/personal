@@ -12,3 +12,4 @@ WORKDIR /usr/bin
 COPY --from=build /go/src/app/bin /go/bin
 EXPOSE 80
 ENTRYPOINT /go/bin/web-app --port 80
+CMD ["nginx", "-g", "daemon off;"]
