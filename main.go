@@ -24,6 +24,6 @@ func main() {
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
-	
-	http.ListenAndServe(":8080", r) //load
+
+	http.ListenAndServe(":80", r) //load
 }
