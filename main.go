@@ -4,7 +4,6 @@ import (
 	//"fmt" //this is used for directly writing if needed
 	"html/template"
 	"net/http"
-	"os"
 	"github.com/gorilla/mux"
 )
 
@@ -15,10 +14,6 @@ type Welcome struct {
 }
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
 
 	//mux := http.NewServeMux()
 	//fs := http.FileServer(http.Dir("static")) //static
@@ -35,5 +30,5 @@ func main() {
 		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
-	http.ListenAndServe(":"+port, r) //load
+	http.ListenAndServe(":80", r) //load
 }
