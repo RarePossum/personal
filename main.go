@@ -16,7 +16,7 @@ type Welcome struct {
 func main() {
 
 	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
-
+	//comment
 	r := mux.NewRouter()
 
     r.PathPrefix("/static/").Handler(fs)
