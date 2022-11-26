@@ -17,7 +17,7 @@ type Welcome struct {
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "80"
+		port = "8080"
 	}
 
 	//mux := http.NewServeMux()
