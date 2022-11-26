@@ -1,8 +1,8 @@
 package main
 
 import (
-	//"fmt" //this is used for directly writing if needed
-	"html/template"
+	"fmt" //this is used for directly writing if needed
+	//"html/template"
 	"net/http"
 	"github.com/gorilla/mux"
 )
@@ -14,16 +14,11 @@ type Welcome struct {
 }
 
 func main() {
-
-	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
-	//comment
-	r := mux.NewRouter()
-
-    r.PathPrefix("/static/").Handler(fs)
-
-	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
-	})
-
-	http.ListenAndServe(":8080", r) //load
-}
+	router := mux.NewRouter()
+	router.HandleFunc("/", DoHealthCheck).Methods("GET")
+	log.Fatal(http.ListenAndServe(":8080", router))
+  }
+  func DoHealthCheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, i'm a golang microservice")
+	w.WriteHeader(http.StatusAccepted) //RETURN HTTP CODE 202
+  }
