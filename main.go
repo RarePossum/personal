@@ -30,5 +30,5 @@ func main() {
 		//fmt.Fprintf(w, "<h1>This is the homepage. Try /hello and /hello/Sammy\n</h1>")
 		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
 	})
-	http.ListenAndServe(":80", r) //load
+	http.ListenAndServe(":8080", r) //load
 }
