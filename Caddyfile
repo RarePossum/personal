@@ -1,4 +1,10 @@
 localhost:80 {
-    log stdout
+    log {
+		output file /var/log/access.log {
+			roll_size 1gb
+			roll_keep 5
+			roll_keep_for 720h
+		}
+	}
 	errors stderr
 }
