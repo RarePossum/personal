@@ -1,5 +1,3 @@
-reverse_proxy david-ji.xyz {
-	header_up Host {
-		localhost:8080
-	}
-}
+david-ji.xyz 
+
+reverse-proxy :8080
