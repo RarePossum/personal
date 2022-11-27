@@ -1,19 +1,29 @@
 package main
- 
+
 import (
-    "fmt"
-    "net/http"
+	//"fmt" //this is used for directly writing if needed
+	"html/template"
+	"net/http"
+	"github.com/gorilla/mux"
 )
- 
+
+//Create a struct that holds information to be displayed in our HTML file
+type Welcome struct {
+	Name string
+	Time string
+}
+
 func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hello World")
-    })
- 
-    http.HandleFunc("/greet/", func(w http.ResponseWriter, r *http.Request) {
-        name:= r.URL.Path[len("/greet/"):]
-            fmt.Fprintf(w, "Hello %s\n", name)
-    })
- 
-    http.ListenAndServe(":9000", nil)
+
+	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
+	//init
+	r := mux.NewRouter()
+
+    r.PathPrefix("/static/").Handler(fs)
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
+	})
+
+	http.ListenAndServe(":8080", r) //load
 }
