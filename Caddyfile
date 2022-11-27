@@ -1,0 +1,4 @@
+localhost:80 {
+    log stdout
+	errors stderror
+}
