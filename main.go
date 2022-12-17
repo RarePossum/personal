@@ -29,6 +29,10 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", nil)
 		
 	})
+	router.GET("/template", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "template.html", nil)
+		
+	})
 
 	router.Run(":" + port)
 }
