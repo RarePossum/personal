@@ -2,8 +2,11 @@ body  {
     min-height:100%;
     background-blend-mode: overlay;
     background-size:cover;
-    background-color: beige;
+    background-color: #F5F5F5;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
  }
 
  
@@ -23,5 +26,5 @@ body  {
    padding-bottom:20px;
    height:auto;
    margin:0%;
-   background-color: darkslategrey;
+   background-color: rgb(27, 37, 70);
  }
