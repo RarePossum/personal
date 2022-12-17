@@ -3,7 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-
+	"os"
+	"io"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,8 +14,13 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+	gin.DisableConsoleColor()
 
-	router := gin.New()
+    // Logging to a file.
+    f, _ := os.Create("gin.log")
+    gin.DefaultWriter = io.MultiWriter(f)
+
+	router := gin.Default()
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.html")
 	router.Static("/static", "static")
