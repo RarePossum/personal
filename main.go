@@ -1,29 +1,28 @@
 package main
 
 import (
-	//"fmt" //this is used for directly writing if needed
-	"html/template"
+	"log"
 	"net/http"
-	"github.com/gorilla/mux"
+
+	"github.com/gin-gonic/gin"
 )
 
-//Create a struct that holds information to be displayed in our HTML file
-type Welcome struct {
-	Name string
-	Time string
-}
-
 func main() {
+	port := "8080"
 
-	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
-	//init
-	r := mux.NewRouter()
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
-    r.PathPrefix("/static/").Handler(fs)
+	router := gin.New()
+	router.Use(gin.Logger())
+	router.LoadHTMLGlob("templates/*.html")
+	router.Static("/static", "static")
 
-	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		template.Must(template.ParseFiles("templates/index.html")).Execute(w, nil)
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+		
 	})
 
-	http.ListenAndServe(":8080", r) //load
+	router.Run(":" + port)
 }

@@ -2,7 +2,7 @@ body  {
     min-height:100%;
     background-blend-mode: overlay;
     background-size:cover;
-    background-color: blue;
+    background-color: rgb(248, 240, 221);
  }
  
  .welcome {
