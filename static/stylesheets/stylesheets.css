@@ -1,8 +1,7 @@
 body  {
-    min-height:100%;
     background-blend-mode: overlay;
     background-size:cover;
-    background-color: #F5F5F5;
+    background-color: #ebebeb;
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 0px;
     border: 0px;
@@ -19,12 +18,63 @@ body  {
  }
 
  #header {
-   width:100%;
-   padding-left: 100px;
-   padding-right: 100px;
+   padding-left: 10%;
    padding-top:20px;
    padding-bottom:20px;
-   height:auto;
-   margin:0%;
-   background-color: rgb(27, 37, 70);
+   height:10%;
+
+   align-content: center;
+   width:98%;
+   margin:auto;
+   background-color: rgb(40, 70, 95);
+   color: white;
  }
+
+ #header a:link {
+  color: rgb(199, 199, 199);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#header a:hover {
+  color: rgb(134, 134, 134);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#faceshot {
+  height:10%;
+  display: flex;
+  float: right;
+  position: absolute;
+  margin-left: 80%;
+  margin-top: -7%;
+}
+
+#faceshot img {
+  max-height: 100%;
+  max-width: auto;
+  object-fit: contain;
+}
+
+#footer {
+  align-content: center;
+  width:98%;
+  height:auto;
+  margin:auto;
+  padding: 20px;
+  color: rgb(77, 77, 77);
+  background-color: rgb(19, 21, 39);
+}
+
+#footer a:hover {
+ color: rgb(199, 199, 199);
+ background-color: transparent;
+ text-decoration: underline;
+}
+
+#footer a:link {
+ color: rgb(134, 134, 134);
+ background-color: transparent;
+ text-decoration: underline;
+}
